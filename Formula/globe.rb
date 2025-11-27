@@ -5,10 +5,10 @@ class Globe < Formula
   version "latest"
   license "GPL-3.0-or-later"
 
-  depends_on "make" => :build
+  depends_on "gcc" => :build
 
   def install
-    system "make"
+    system ENV.cc, "globe.c", "-o", "globe", "-lm"
     bin.install "globe"
   end
 
